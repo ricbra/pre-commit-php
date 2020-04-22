@@ -4,30 +4,15 @@ Pre-commit scripts appropriate for *any* PHP project. These hooks are made as cu
 
 # Setup
 
-Just add to your `.pre-commit-config.yaml` file with the following
-
-```yaml
-- repo: https://github.com/digitalpulp/pre-commit-php.git
-  sha: 1.3.0
-  hooks:
-  - id: php-lint
-  - id: php-unit
-  - id: php-cs
-    files: \.(php)$
-    args: [--standard=PSR1 -p]
-  - id: php-cbf
-    files: \.(php)$
-    args: [--standard=PSR1 -p]
-```
+See (Adding pre-commit plugins to your project)[https://pre-commit.com/#adding-pre-commit-plugins-to-your-project]
 
 # Supported Hooks
 
 ## php-lint
 
 ```yaml
-<<<<<<< HEAD
 - repo: https://github.com/digitalpulp/pre-commit-php.git
-  sha: 1.3.0
+  rev: 1.4.0
   hooks:
   - id: php-lint
 ```
@@ -38,7 +23,7 @@ A bash script that runs `php -l` against stage files that are php. Assumes `php`
 
 ```yaml
 - repo: https://github.com/digitalpulp/pre-commit-php.git
-  sha: 1.3.0
+  rev: 1.4.0
   hooks:
   - id: php-lint-all
 ```
@@ -50,7 +35,7 @@ A systems hook that just runs `php -l` against stage files that have the `.php` 
 
 ```yaml
 - repo: https://github.com/digitalpulp/pre-commit-php.git
-  sha: 1.3.0
+  rev: 1.4.0
   hooks:
   - id: php-unit
 ```
@@ -66,7 +51,7 @@ Note in its current state, it will run the whole PHPUnit test as along as `.php`
 
 ```yaml
 - repo: https://github.com/digitalpulp/pre-commit-php.git
-  sha: 1.3.0
+  rev: 1.4.0
   hooks:
   - id: php-cs
     files: \.(php)$
@@ -79,13 +64,11 @@ It will assume that there is a valid PHP Code Sniffer executable at these locati
 
 The `args` property in your hook declaration can be used for pass any valid PHP Code Sniffer arguments. In the example above, it will run PHP Code Sniffer against only the staged php files with the `PSR-1` and progress enabled.
 
-If you have multiple standards or a comma in your `args` property, escape the comma character like so
-
 ## php-cbf
 
 ```yaml
 - repo: https://github.com/digitalpulp/pre-commit-php.git
-  sha: 1.3.0
+  rev: 1.4.0
   hooks:
   - id: php-cs
     files: \.(php)$
@@ -101,7 +84,7 @@ If you have multiple standards or a comma in your `args` property, escape the co
 
 ```yaml
 - repo: https://github.com/digitalpulp/pre-commit-php.git
-  sha: 1.3.0
+  rev: 1.4.0
   hooks:
   - id: php-cs
     files: \.(php)$
@@ -113,7 +96,7 @@ To install PHP Codesniffer (phpcs & phpcbf), follow the [recommended steps here]
 ## php-cs-fixer
 ```yaml
 -- repo: https://github.com/digitalpulp/pre-commit-php.git
-   sha: 1.3.0
+   rev: 1.4.0
   hooks:
   - id: php-cs-fixer
     files: \.(php)$
@@ -123,3 +106,18 @@ Similar pattern as the php-cs hook. A bash script that will run the appropriate 
 
 The tool will fail a build when it has made changes to the staged files. This allows a developer to do a `git diff` and examine the changes that it has made. Remember that you may omit this if needed with a `SKIP=php-cs-fixer git commit`.
 
+## php-stan
+
+Adds the (PHPStan)[https://phpstan.org/] tool.
+
+
+
+```yaml
+-- repo: https://github.com/digitalpulp/pre-commit-php.git
+   rev: 1.4.0
+  hooks:
+  - id: php-stan
+    files: \.(php)$
+```
+
+An `args` property in your hook declaration can be used for pass any valid PHPStan arguments.
