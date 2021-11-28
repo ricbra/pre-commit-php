@@ -47,3 +47,10 @@
   entry: pre_commit_hooks/php-stan.sh
   language: script
   files: \.php$
+
+- id: php-psalm
+  name: Psalm
+  description: Run Psalm against all staged PHP files.
+  entry: pre_commit_hooks/php-psalm.sh
+  language: script
+  files: \.php$

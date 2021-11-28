@@ -121,3 +121,19 @@ Adds the (PHPStan)[https://phpstan.org/] tool.
 ```
 
 An `args` property in your hook declaration can be used for pass any valid PHPStan arguments.
+
+## php-psalm
+
+Adds the [PSalm](https://psalm.dev/) tool.
+
+
+
+```yaml
+-- repo: https://github.com/digitalpulp/pre-commit-php.git
+   rev: 1.4.0
+  hooks:
+  - id: php-psalm
+    files: \.(php)$
+```
+
+An `args` property in your hook declaration can be used for passing any valid Psalm arguments.
