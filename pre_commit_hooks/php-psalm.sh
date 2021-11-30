@@ -12,7 +12,7 @@
 # - php
 #
 # Arguments
-# See: https://phpstan.org/user-guide/command-line-usage
+# See: https://psalm.dev/docs/running_psalm/command_line_usage/
 #
 ################################################################################
 
